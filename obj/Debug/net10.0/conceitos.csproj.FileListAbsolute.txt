@@ -12,3 +12,4 @@ D:\conceitos\conceitos\obj\Debug\net10.0\refint\conceitos.dll
 D:\conceitos\conceitos\obj\Debug\net10.0\conceitos.pdb
 D:\conceitos\conceitos\obj\Debug\net10.0\conceitos.genruntimeconfig.cache
 D:\conceitos\conceitos\obj\Debug\net10.0\ref\conceitos.dll
+D:\conceitos\conceitos\obj\Debug\net10.0\conceitos.sourcelink.json
