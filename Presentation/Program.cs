@@ -3,22 +3,17 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.IO;
 using System.Data.Common;
-
-
-public class Linguagem
-{
-    public int Id { get; set; }
-    public string Nome { get; set; }
-    public string Nivel { get; set; }
-}
-
+using conceitos.DTOs;
+using conceitos.Infra.Repositories;
+namespace conceitos.Presetation;
 
 
 class Program
 {
-    static List<Linguagem> linguagens = [];
+    
     static void Main()
     {
+        LanguageRepository repository = new();
         string nome;
         string nivel;
         int id = 0;
@@ -44,10 +39,10 @@ class Program
                     nome = Console.ReadLine();
                     Console.Write("Nivel: ");
                     nivel = Console.ReadLine();
-                    Criar(new Linguagem { Id = count, Nome = nome, Nivel = nivel });
+                    repository.Criar(new LanguageDto { Id = count, Nome = nome, Nivel = nivel });
                     break;
                 case '2':
-                    Lista().ForEach(x =>
+                    repository.Lista().ForEach(x =>
                     {
                         Console.WriteLine(x.Id);
                         Console.WriteLine(x.Nome);
@@ -60,11 +55,11 @@ class Program
                     nome = Console.ReadLine();
                     Console.Write("Nivel: ");
                     nivel = Console.ReadLine();
-                    Atualizar(id, new Linguagem { Id = id, Nome = nome, Nivel = nivel });
+                    repository.Atualizar(id, new LanguageDto { Id = id, Nome = nome, Nivel = nivel });
                     break;
                 case '4':
                     id = int.Parse(Console.ReadLine());
-                    Deletar(FindbyId(id));
+                    repository.Deletar(repository.FindbyId(id));
                     break;
                 case '5':
                     break;
@@ -72,40 +67,4 @@ class Program
         }
 
     }
-    static void Criar(Linguagem linguagem)
-    {
-        linguagens.Add(linguagem);
-    }
-    static List<Linguagem> Lista()
-    {
-        return linguagens;
-    }
-// um teste
-    static void Atualizar(int id, Linguagem linguagem)
-    {
-
-        Linguagem obj = linguagens.Find(x => x.Id == id);
-
-        if (obj != null)
-        {
-            obj.Id = linguagem.Id;
-            obj.Nome = linguagem.Nome;
-            obj.Nivel = linguagem.Nivel;
-        }
-        else
-        {
-            Console.WriteLine("Linguagem nao encontrada ");
-        }
-    }
-
-    static bool Deletar(Linguagem linguagem)
-    {
-        return linguagens.Remove(linguagem);
-    }
-
-    static Linguagem FindbyId(int id)
-    {
-        return linguagens.Find(x => x.Id == id);
-    }
-
 }
