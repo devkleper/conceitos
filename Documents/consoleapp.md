@@ -3,6 +3,8 @@ Criar estrutura de camadas para organização e disponibilização de arquivos.
 Exemplo:
 
 	+ __Presentation__/Program.cs
+	+ 	> __Presentation__/Cadastro.cs (*Montar lógica de cadastro apenas da console view*)
+	+ 	> __Presentation__/Menu.cs (*Inserir apenas lógica de menu*)
 	+ __Services__/LanguageService.cs
 	+ __DTOs__/LanguageDto.cs
 	+ __Infra__/__Data__/LanguageData.cs
